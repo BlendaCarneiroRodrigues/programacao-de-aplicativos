@@ -16,7 +16,7 @@ else:
     print(f"Acesso Negado! O Pesquisador {nome} não foi encontrado.")
     cadastrar = input("Você gostaria de cadastra esse pesquisador? (s/n): ")
     if cadastrar == "s":
-        autorizados.append-(nome)
+        autorizados.append(nome)
         print("O pesquisador foi cadastrado.")
         print(f"Nova lista {autorizados}")
     else:
