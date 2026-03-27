@@ -1,5 +1,6 @@
-senha = int(input("Digite a senha de usuário"))
-senha_correta = 2009
+senha_correta = "2009"
+senha = ""
 
 while senha != senha_correta:
-    senha
+      senha = input("Digite a senha: ")
+print("senha correta:")    
