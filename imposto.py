@@ -1,0 +1,12 @@
+salarios = [2000.00, 2500.00, 4000.00, 1800.00, 925.00]
+for s in salarios:
+    if s <= 2000.00:
+        imposto = s * 0.10
+        percentual = "10%"
+    else:
+        imposto = s * 0.20
+    sobra = s - imposto
+
+    print(f"salário {s}, foi cobrado {percentual}, de imposto")
+
+
