@@ -9,5 +9,5 @@ def avaliar_desempenho(notas):
         return "Insuficiente"
     
 valor_das_notas = float(input("Digite uma nota de 0 a 10: ")) 
-resultado = avaliar_desempenho(notas)
+resultado = avaliar_desempenho(valor_das_notas)
 print(f"O resultado é {resultado}")
