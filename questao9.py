@@ -1,5 +1,13 @@
-def somar_carrinho(lista_precos):
-    total = 0 
-    for precos in lista_precos:
-        total += precos
-        print(f"Soma dos produtos da lista; {total}")
+def somar_carrinho(precos):
+    total = (precos)
+
+    if total > 500:
+        total *= 0.9
+
+    return total
+
+lista_compras = [120.50, 250.00, 180.75, 90.00]
+
+valor_final = somar_carrinho(lista_compras)
+
+print(f"Valor final a pagar: R$ {valor_final}")
