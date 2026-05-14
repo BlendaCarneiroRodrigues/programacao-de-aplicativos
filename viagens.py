@@ -8,11 +8,11 @@ def criar():
 
 def ler():
     with open("viagens.txt", 'r') as v:
-        viagem = v.readline()
+        viagens = v.readlines()
 
         i = 0
-        for viagens in viagem:
-            print(f"{i} - {viagens.split()}")
+        for viagem in viagens:
+            print(f"{i} - {viagem.split()}")
             i += 1
 
 def editar():
