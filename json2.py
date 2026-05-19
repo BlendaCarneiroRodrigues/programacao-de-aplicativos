@@ -1,8 +1,23 @@
 import json
 
-with open("notas.json", 'w'):
-    notas = {"matematica":8.5, "portugues":9.0}
+notas = {
+    "matematica":8.5,
+    "portugues": 9.0,
+    "soma": 0
+}
 
-with open('notas.json', 'r') as arquivo:
-    soma = notas['matematica'] + notas['portugues']
-    print(f"A soma das notas é: {soma}")
+
+matematica = notas["matematica"]
+portugues = notas["portugues"]
+
+
+soma_devalor = matematica + portugues
+notas["soma"] = soma_devalor
+
+with open('notas.json','a') as arquivo:
+    json.dump(notas, arquivo, ensure_ascii=False)
+
+print("notas carregadas : ")
+print(f"metmatica: {matematica}")
+print(f"portugues : {portugues}")
+print(f"soma das notas : {soma_devalor}")
