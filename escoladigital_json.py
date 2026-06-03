@@ -28,8 +28,6 @@ def listar_alunos():
         dados = json.load(arquivo)
     print()
 
-def atualizar_aluno():
-
 
 
 
