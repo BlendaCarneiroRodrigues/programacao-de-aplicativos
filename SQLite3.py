@@ -22,6 +22,43 @@ comando_inserir = f''' insert into alunos(nome_aluno, telefone_aluno, turma_alun
 
 cursor.execute(comando_inserir)
 conexao.commit()
-conexao.close()
 
 print("Dados gravados com sucesso!")
+
+conexao = sqlite3.connect('escola_demonstracao.db')
+cursor = conexao.cursor()
+
+cursor.execute("SELECT * FROM alunos")
+dados = cursor.fetchall()
+
+for linha in dados:
+    print(linha)
+
+
+conexao = sqlite3.connect("escola_demonstracao.db")
+cursor = conexao.cursor()
+
+
+id_aluno = 1
+
+
+novo_nome = "mariana costa"
+novo_cpf = "000.000.000-00"
+
+
+cursor.execute("""
+UPDATE alunos
+SET nome_aluno = ?, cpf_aluno = ?
+WHERE id_aluno = ?
+""", (novo_nome, novo_cpf, id_aluno))
+
+
+conexao.commit()
+
+cursor.execute("SELECT * FROM Alunos WHERE id = ?", (id_aluno,))
+aluno = cursor.fetchone()
+
+print("Dados atualizados:")
+print(aluno)
+
+conexao.close()    
