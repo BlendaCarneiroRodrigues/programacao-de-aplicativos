@@ -1,15 +1,16 @@
 import sqlite3
 
+
 conexao = sqlite3.connect('escola_demonstracao.db')
 cursor = conexao.cursor()
 
 cursor.execute(''' create table if not exists alunos( ID_aluno integer primary key autoincrement,
-                    nome_aluno text not null,
-                    telefone_aluno text,
-                    turma_aluno text,
-                    idade_aluno integer,
-                    cpf_aluno text inique not null
-                    )''')
+                nome_aluno text not null,
+                telefone_aluno text,
+                turma_aluno text,
+                idade_aluno integer,
+                cpf_aluno text inique not null
+                )''')
 
 nome = input("Digite o nome do aluno: ")
 telefone = input("Digite o telefote do aluno: ")
@@ -25,6 +26,7 @@ conexao.commit()
 
 print("Dados gravados com sucesso!")
 
+
 conexao = sqlite3.connect('escola_demonstracao.db')
 cursor = conexao.cursor()
 
@@ -37,7 +39,6 @@ for linha in dados:
 
 conexao = sqlite3.connect("escola_demonstracao.db")
 cursor = conexao.cursor()
-
 
 id_aluno = 1
 
@@ -61,4 +62,21 @@ aluno = cursor.fetchone()
 print("Dados atualizados:")
 print(aluno)
 
-conexao.close()    
+def excluir(id_aluno):
+
+    conexao = sqlite3.connect("escola_demonstracao.db")
+    cursor = conexao.cursor()
+
+    id_aluno = int(input("Digite o ID do aluno: "))
+
+    cursor.execute(f"SELECT * FROM Alunos WHERE id = {id_aluno}")
+    aluno = cursor.fetchone()
+
+    if aluno:
+        cursor.execute(f"DELETE FROM Alunos WHERE id = {id_aluno}")
+        conexao.commit()
+        print("Aluno removido com sucesso!")
+    else:
+     print("Aluno não encontrado.")
+
+    conexao.close()    
