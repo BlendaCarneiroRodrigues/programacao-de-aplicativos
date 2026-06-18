@@ -1,10 +1,10 @@
 import sqlite3
 
+def criar():
+    conexao = sqlite3.connect('escola_demonstracao.db')
+    cursor = conexao.cursor()
 
-conexao = sqlite3.connect('escola_demonstracao.db')
-cursor = conexao.cursor()
-
-cursor.execute(''' create table if not exists alunos( ID_aluno integer primary key autoincrement,
+    cursor.execute(''' create table if not exists alunos( ID_aluno integer primary key autoincrement,
                 nome_aluno text not null,
                 telefone_aluno text,
                 turma_aluno text,
@@ -12,55 +12,60 @@ cursor.execute(''' create table if not exists alunos( ID_aluno integer primary k
                 cpf_aluno text inique not null
                 )''')
 
-nome = input("Digite o nome do aluno: ")
-telefone = input("Digite o telefote do aluno: ")
-turma = input("digite a turma do aluno: ")
-idade = int(input("Digite a idade do aluno: "))
-cpf = input("Digite o CPF do aluno: ")
+    nome = input("Digite o nome do aluno: ")
+    telefone = input("Digite o telefote do aluno: ")
+    turma = input("digite a turma do aluno: ")
+    idade = int(input("Digite a idade do aluno: "))
+    cpf = input("Digite o CPF do aluno: ")
 
-comando_inserir = f''' insert into alunos(nome_aluno, telefone_aluno, turma_aluno, idade_aluno, cpf_aluno)
+    comando_inserir = f''' insert into alunos(nome_aluno, telefone_aluno, turma_aluno, idade_aluno, cpf_aluno)
                         values ('{nome}', '{telefone}', '{turma}', '{idade}', '{cpf}')'''
 
-cursor.execute(comando_inserir)
-conexao.commit()
-
-print("Dados gravados com sucesso!")
-
-
-conexao = sqlite3.connect('escola_demonstracao.db')
-cursor = conexao.cursor()
-
-cursor.execute("SELECT * FROM alunos")
-dados = cursor.fetchall()
-
-for linha in dados:
-    print(linha)
+    print("Dados gravados com sucesso!")
+    cursor.execute(comando_inserir)
+    conexao.commit()
 
 
-conexao = sqlite3.connect("escola_demonstracao.db")
-cursor = conexao.cursor()
+def listar():
+    conexao = sqlite3.connect('escola_demonstracao.db')
+    cursor = conexao.cursor()
 
-id_aluno = 1
+    cursor.execute("SELECT * FROM alunos")
+    alunos = cursor.fetchall()
+
+    if not alunos:
+       print("Nenhum aluno encontrado!")
+    else:
+       for aluno in alunos:
+          print(f"id: {aluno[0]}, Nome: {aluno[1]}, Telefone: {aluno[2]}, Turma: {aluno[3]}, Idade: {aluno[4]}, CPF: {aluno[5]}") 
+    conexao.close()        
 
 
-novo_nome = "mariana costa"
-novo_cpf = "000.000.000-00"
+def atualizar():
+    conexao = sqlite3.connect("escola_demonstracao.db")
+    cursor = conexao.cursor()
+
+    id_aluno = 1
 
 
-cursor.execute("""
+    novo_nome = "mariana costa"
+    novo_cpf = "000.000.000-00"
+
+
+    cursor.execute("""
 UPDATE alunos
 SET nome_aluno = ?, cpf_aluno = ?
 WHERE id_aluno = ?
 """, (novo_nome, novo_cpf, id_aluno))
 
 
-conexao.commit()
+    conexao.commit()
 
-cursor.execute("SELECT * FROM Alunos WHERE id = ?", (id_aluno,))
-aluno = cursor.fetchone()
+    cursor.execute("SELECT * FROM Alunos WHERE id = ?", (id_aluno,))
+    aluno = cursor.fetchone()
 
-print("Dados atualizados:")
-print(aluno)
+    print("Dados atualizados:")
+    print(aluno)
 
 def excluir(id_aluno):
 
