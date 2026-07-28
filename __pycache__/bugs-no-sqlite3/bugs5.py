@@ -16,4 +16,4 @@ def vincular_aluno_turma():
     finally:
         conexao.close()    
 
-# esta faltando um except para identificar erro quando digita frase e vez de número.        
+# esta faltando um except para identificar erro quando é digitado frase e vez de número.        

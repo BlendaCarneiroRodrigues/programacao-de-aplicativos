@@ -24,4 +24,4 @@ def criar_tabela():
     conexao.close()
 
 
-# o primeiro cursor.execute pedi a referencia de id de uma tabela que esta em branco então não tem id para referenciar.    
+# o primeiro cursor.execute pedi a referencia de id de uma tabela que está em branco então não tem id para referenciar.    
