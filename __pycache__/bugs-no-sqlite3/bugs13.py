@@ -6,9 +6,11 @@ def verificar_registros():
 
     cursor.execute("SELECT * FROM alunos")
 
-    print("primeiro print:", cursor.fatchall())
-    print("segundo print:", cursor.fatchall())
+    dados = cursor.fetchall
+
+    print("primeiro print:", dados)
+    print("segundo print:", dados)
 
     conexao.close()
 
-# O primeiro print com fatchall consome todas as informações dessa forma o segundo print não mostra nada.
+# O primeiro print com fatchall consome todas as informações dessa forma o segundo print não mostra nada. (COREÇÃO: remover os prints com o fatchall)

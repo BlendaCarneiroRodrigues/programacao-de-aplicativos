@@ -13,4 +13,4 @@ def inicializar_banco():
     conexao.commit()
     conexao.close()
 
-# antes de encerrar a conexao com o banco de dados não tem o conexao.commit() que é justamente para salvar as alterações.   
+# antes de encerrar a conexao com o banco de dados não tem o conexao.commit() que é justamente para salvar as alterações. (COREÇÃO: adicionar o conexao.commit)   

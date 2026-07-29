@@ -9,4 +9,6 @@ def menu():
         elif opcao == "2":
             print("Saindo do programa.")
 
-            pass    
+            break   
+
+# o laço while não estáva sendo encerrado com o pass que está no final. (COREÇÃO: trocar o pass pelo break)

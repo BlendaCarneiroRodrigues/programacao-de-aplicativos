@@ -9,4 +9,4 @@ def buscar_professor(id_prof):
     print(resultado)
     conexao.close()
 
-# o sistema não estava conseguindo interpretar o código por falta de uma virgula no código.    
+# o sistema não estava conseguindo interpretar o código por falta de uma virgula no código. (COREÇÃO: adicionar um , no cursor.execute)   

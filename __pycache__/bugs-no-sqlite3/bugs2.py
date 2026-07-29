@@ -13,4 +13,4 @@ def cadastrar_serie(nome_serie, id_escola):
     finally:
         conexao.close()
 
-# no código não tem o Foreign Key para chaves estrangeiras, então o código não reconhece a chave como existente.            
+# no código não tem o Foreign Key para chaves estrangeiras, então o código não reconhece a chave como existente. (COREÇÃO: adicionar o foreing key)           

@@ -6,7 +6,8 @@ def cadastrar_lista_alunos():
     conexao = sqlite3.connect('sistema_escola.db')
     cursor = conexao.cursor()
 
-    cursor.execute("INSERT INTO alunos (nome, id_turma) VALUES (?,?)", lista)
+    cursor.executemany("INSERT INTO alunos (nome, id_turma) VALUES (?,?)", lista)
     conexao.commit()
     conexao.close()
     
+# está sendo usado o execute para colocar varias informações, isso causa o erro. (COREÇÃO: trocar o execute por executemany)        

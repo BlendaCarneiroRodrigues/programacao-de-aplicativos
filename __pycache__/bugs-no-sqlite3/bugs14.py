@@ -10,6 +10,7 @@ def cadastrar_serie_seguro(nome, Id_escola):
     except sqlite3.Error as e:
         print("erro técnico:", e)
     finally:
-        conexao.close()        
+        if conexao:
+            conexao.close()        
 
-# No caso de falha por falta de permissão na pasta a conexão nunca será criada        
+# a conexão falha e o finally chama uma coisa que não existe. (COREÇÃO: adicionar um if para o finally chamar uma coisa que existe)        

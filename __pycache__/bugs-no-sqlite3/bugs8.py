@@ -12,4 +12,4 @@ def cadastrar_professor(nome, cpf):
                    )
                    ''')
     
-# o sistema aceita dois cpf igual por que na estrutura da tabela não esta especificando que tem que ser cpf unico esta faltado o UNIQUE na tabela.    
+# o sistema aceita dois cpf igual por que na estrutura da tabela não esta especificando que tem que ser cpf unico esta faltado o UNIQUE na tabela. (COREÇÃO: adicionar o UNIQUE)   
