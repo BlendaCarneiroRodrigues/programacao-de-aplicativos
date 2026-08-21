@@ -263,3 +263,36 @@ def menu():
         print("Erro no menu:", erro)
 
 menu()                
+
+
+assert sqlite3.connect("provedor_internet.db").execute(
+    "SELECT name FROM sqlite_master WHERE type='table' AND name='telecomunicacoes'"
+).fetchone() is not None
+
+assert sqlite3.connect("provedor_internet.db").execute(
+    "SELECT name FROM sqlite_master WHERE type='table' AND name='centrais_distribuicao'"
+).fetchone() is not None
+
+assert sqlite3.connect("provedor_internet.db").execute(
+    "SELECT COUNT(*) FROM telecomunicacoes"
+).fetchone()[0] >= 0
+
+assert sqlite3.connect("provedor_internet.db").execute(
+    "SELECT COUNT(*) FROM centrais_distribuicao"
+).fetchone()[0] >= 0
+
+assert sqlite3.connect("provedor_internet.db").execute(
+    "PRAGMA table_info(telecomunicacoes)"
+).fetchall()[1][1] == "nome_provedor"
+
+assert sqlite3.connect("provedor_internet.db").execute(
+    "PRAGMA table_info(telecomunicacoes)"
+).fetchall()[2][1] == "outorga_anatel"
+
+assert sqlite3.connect("provedor_internet.db").execute(
+    "PRAGMA table_info(centrais_distribuicao)"
+).fetchall()[1][1] == "bairro_central"
+
+assert sqlite3.connect("provedor_internet.db").execute(
+    "PRAGMA table_info(centrais_distribuicao)"
+).fetchall()[2][1] == "id_telecom"
